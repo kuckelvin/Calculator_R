@@ -36,5 +36,5 @@ Users of this Calculator should be able to:
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-#Author: Kelvin Echenim.
+### Author: Kelvin Echenim.
 
