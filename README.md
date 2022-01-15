@@ -19,7 +19,7 @@ Users of this Calculator should be able to:
 
 ### Links
 
-- Solution URL: [https://kuckelvin.github.io/Calculator_R]
+- Solution URL: [Please click here!](https://kuckelvin.github.io/Calculator_R)
 
 ## Thanks for your time!
 
