@@ -33,7 +33,6 @@ Users of this Calculator should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Styled Components]
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### Author: Kelvin Echenim.
 
