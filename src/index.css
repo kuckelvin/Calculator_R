@@ -50,6 +50,7 @@ body {
   font-size: 3em;
   font-weight: 500;
   line-height: 36px;
+  letter-spacing: 1px;
 }
 
 .keypad {
@@ -71,18 +72,30 @@ button {
   font-weight: 700;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   body {
     display: flex;
     justify-content: center;
   }
 
   .container {
-    width: 80vw;
-    height: 100vh;
+    max-width: 80vw;
+    height: 95vh;
     overflow: hidden;
     position: relative;
     left: 5%;
+    margin-top: 10px;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(6, 90px);
+  }
+
+  .display {
+    min-width: 350px;
+    min-height: 120px;
   }
 }
 

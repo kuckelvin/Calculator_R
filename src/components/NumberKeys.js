@@ -128,27 +128,27 @@ const NumberKeys = () => {
         <Display result1={clickValue} result2={result}/>
         <div className="keypad">
             <button id="delete"onClick={clear}>AC</button>
-            <button onClick={squareRoot}>√</button>
-            <button onClick={percent}>%</button>
+            <button style={{color: "grey"}} onClick={squareRoot}>√</button>
+            <button style={{color: "grey"}} onClick={percent}>%</button>
             <button id="delete" onClick={erase}>DEL</button>
             <button onClick={updateNumberClick}>1</button>
             <button onClick={updateNumberClick}>2</button>
             <button onClick={updateNumberClick}>3</button>
-            <button name="/" onClick={updateOperandClick}>÷</button>
+            <button name="/" style={{color: "grey"}} onClick={updateOperandClick}>÷</button>
             <button onClick={updateNumberClick}>4</button>
             <button onClick={updateNumberClick}>5</button>
             <button onClick={updateNumberClick}>6</button>
-            <button name="*" onClick={updateOperandClick}>&times;</button>
+            <button name="*" style={{color: "grey"}} onClick={updateOperandClick}>&times;</button>
             <button onClick={updateNumberClick}>7</button>
             <button onClick={updateNumberClick}>8</button>
             <button onClick={updateNumberClick}>9</button>
-            <button name="-" onClick={updateOperandClick}>&ndash;</button>
+            <button name="-" style={{color: "grey"}} onClick={updateOperandClick}>&ndash;</button>
             <button onClick={periodClick}>.</button>
             <button onClick={updateNumberClick}>0</button>
             <button onClick={negate}>+/-</button>
-            <button name="+" onClick={updateOperandClick}>+</button>
-            <button className="span-two-columns">HISTORY</button>
-            <button onClick={equals} className="span-two-columns">=</button>
+            <button name="+" style={{color: "grey"}} onClick={updateOperandClick}>+</button>
+            <button className="span-two-columns" style={{color: "grey"}}>HISTORY</button>
+            <button onClick={equals} className="span-two-columns" style={{color: "darkgrey" }}>=</button>
         </div>
         </>
     )

@@ -10,4 +10,5 @@ const Display = ({result1, result2}) => {
     )
 }
 
+
 export default Display
