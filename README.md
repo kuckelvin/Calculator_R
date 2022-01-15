@@ -14,7 +14,7 @@ Users of this Calculator should be able to:
 
 ### Calculator Screenshot
 
-![](./Calculator Design.jpg)
+![](./Calculator Design.png)
 
 
 ### Links
