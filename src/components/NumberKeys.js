@@ -1,6 +1,8 @@
 import Display from "./Display.js"
 import { useState } from "react"
 import { FaBackspace, FaEquals, FaMinus, FaPlus, FaPercent, FaSquareRootAlt, FaDivide, FaTimes} from "react-icons/fa"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
 
@@ -139,12 +141,8 @@ const NumberKeys = () => {
     //         setClickValue(integer2)
     //     }
     // }
-    const negateStyles = {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "30px",
-    }    
+    
+
     return (
         <>
         <Display result1={clickValue} result2={result}/>
@@ -167,7 +165,7 @@ const NumberKeys = () => {
             <button name="-" style={{color: "grey"}} onClick={updateOperandClick}><FaMinus /></button>
             <button className="numberKey" onClick={periodClick}>.</button>
             <button className="numberKey" onClick={updateNumberClick}>0</button>
-            <button className="numberKey" onClick={negate} style={negateStyles}><FaPlus /><br />/<FaMinus /></button>
+            <button className="numberKey" onClick={negate}><FontAwesomeIcon icon={solid("plus-minus")} /></button>
             <button name="+" style={{color: "grey"}} onClick={updateOperandClick}><FaPlus /></button>
             <button id="ans" className="span-two-columns" onClick={showAns}>ANS</button>
             <button id="equals" onClick={equals} className="span-two-columns"><FaEquals /></button>
