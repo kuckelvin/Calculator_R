@@ -1,6 +1,6 @@
 import Display from "./Display.js"
 import { useState } from "react"
-
+import { FaBackspace, FaEquals, FaMinus, FaPlus, FaPercent, FaSquareRootAlt, FaDivide, FaTimes} from "react-icons/fa"
 
 
 
@@ -139,34 +139,38 @@ const NumberKeys = () => {
     //         setClickValue(integer2)
     //     }
     // }
-
-    
+    const negateStyles = {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "30px",
+    }    
     return (
         <>
         <Display result1={clickValue} result2={result}/>
         <div className="keypad">
             <button id="delete"onClick={clear}>AC</button>
-            <button style={{color: "grey"}} onClick={squareRoot}>√</button>
-            <button style={{color: "grey"}} onClick={percent}>%</button>
-            <button id="delete" onClick={erase}>DEL</button>
-            <button onClick={updateNumberClick}>1</button>
-            <button onClick={updateNumberClick}>2</button>
-            <button onClick={updateNumberClick}>3</button>
-            <button name="/" style={{color: "grey"}} onClick={updateOperandClick}>÷</button>
-            <button onClick={updateNumberClick}>4</button>
-            <button onClick={updateNumberClick}>5</button>
-            <button onClick={updateNumberClick}>6</button>
-            <button name="*" style={{color: "grey"}} onClick={updateOperandClick}>&times;</button>
-            <button onClick={updateNumberClick}>7</button>
-            <button onClick={updateNumberClick}>8</button>
-            <button onClick={updateNumberClick}>9</button>
-            <button name="-" style={{color: "grey"}} onClick={updateOperandClick}>&ndash;</button>
-            <button onClick={periodClick}>.</button>
-            <button onClick={updateNumberClick}>0</button>
-            <button onClick={negate}>+/-</button>
-            <button name="+" style={{color: "grey"}} onClick={updateOperandClick}>+</button>
+            <button style={{color: "grey"}} onClick={squareRoot}><FaSquareRootAlt /></button>
+            <button style={{color: "grey"}} onClick={percent}><FaPercent /></button>
+            <button id="delete" onClick={erase}><FaBackspace /></button>
+            <button className="numberKey" onClick={updateNumberClick}>1</button>
+            <button className="numberKey" onClick={updateNumberClick}>2</button>
+            <button className="numberKey" onClick={updateNumberClick}>3</button>
+            <button name="/" style={{color: "grey"}} onClick={updateOperandClick}><FaDivide /></button>
+            <button className="numberKey" onClick={updateNumberClick}>4</button>
+            <button className="numberKey" onClick={updateNumberClick}>5</button>
+            <button className="numberKey" onClick={updateNumberClick}>6</button>
+            <button name="*" style={{color: "grey"}} onClick={updateOperandClick}><FaTimes /></button>
+            <button className="numberKey" onClick={updateNumberClick}>7</button>
+            <button className="numberKey"  onClick={updateNumberClick}>8</button>
+            <button className="numberKey" onClick={updateNumberClick}>9</button>
+            <button name="-" style={{color: "grey"}} onClick={updateOperandClick}><FaMinus /></button>
+            <button className="numberKey" onClick={periodClick}>.</button>
+            <button className="numberKey" onClick={updateNumberClick}>0</button>
+            <button className="numberKey" onClick={negate} style={negateStyles}><FaPlus /><br />/<FaMinus /></button>
+            <button name="+" style={{color: "grey"}} onClick={updateOperandClick}><FaPlus /></button>
             <button id="ans" className="span-two-columns" onClick={showAns}>ANS</button>
-            <button id="equals" onClick={equals} className="span-two-columns">=</button>
+            <button id="equals" onClick={equals} className="span-two-columns"><FaEquals /></button>
         </div>
         </>
     )
