@@ -113,12 +113,12 @@ const NumberKeys = () => {
     const updateOperandClick = (e) => {
         if (result !== "") {
             const answer = compute()
-            setResult(answer+(e.target.name))
+            setResult(answer+(e.currentTarget.name))
             setClickValue("0")
             setHistory(answer.toString())
         } else {
             setClickValue("0")
-            setResult(clickValue+(e.target.name))
+            setResult(clickValue+(e.currentTarget.name))
         }
         
     }
