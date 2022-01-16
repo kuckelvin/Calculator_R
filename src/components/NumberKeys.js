@@ -81,6 +81,8 @@ const NumberKeys = () => {
     const periodClick = (e) => {
        if (clickValue.includes(".")) {
            return
+       } else if (clickValue === "0") {
+            setClickValue("0.")
        } else {
            updateNumberClick(e)
        }
