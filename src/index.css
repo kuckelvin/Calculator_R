@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,900&display=swap");
+
 *,
 ::before,
 ::after {
@@ -6,11 +8,12 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: linear-gradient(to right, #bac2d2, #2b78b8);
   padding: 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -18,13 +21,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 10px;
   background-color: #000;
   overflow: hidden;
-  width: 420px;
-  position: relative;
-  left: 35%;
+  max-width: 412px;
+  max-height: 100vh;
 }
 
 .display {
@@ -56,35 +58,58 @@ body {
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(6, 100px);
+  grid-template-rows: repeat(6, 98px);
 }
 
 .span-two-columns {
   grid-column: span 2;
+  color: #6b705c;
+}
+
+.numberKey {
+  color: #264653;
+  font-size: 2.5rem;
+}
+
+#ans {
+  border-bottom-left-radius: 24px;
+  letter-spacing: 3px;
+  padding-bottom: 8px;
+  font-size: 2.5rem;
+}
+
+#equals {
+  border-bottom-right-radius: 24px;
 }
 
 button {
-  margin: 4px;
+  margin: 3px;
   border-radius: 3px;
   outline: none;
   cursor: pointer;
   font-size: 2em;
   font-weight: 700;
+  text-align: center;
+}
+
+#delete {
+  color: red;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 @media (max-width: 650px) {
-  body {
-    display: flex;
-    justify-content: center;
+  .container {
+    max-width: 372px;
+    max-height: 700px;
+    overflow: hidden;
+    margin: 2px 0;
   }
 
-  .container {
-    max-width: 80vw;
-    height: 95vh;
-    overflow: hidden;
-    position: relative;
-    left: 5%;
-    margin-top: 10px;
+  button {
+    margin: 3px;
   }
 
   .keypad {
@@ -97,8 +122,4 @@ button {
     min-width: 350px;
     min-height: 120px;
   }
-}
-
-#delete {
-  color: red;
 }

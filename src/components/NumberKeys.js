@@ -1,6 +1,8 @@
 import Display from "./Display.js"
 import { useState } from "react"
-
+import { FaBackspace, FaEquals, FaMinus, FaPlus, FaPercent, FaSquareRootAlt, FaDivide, FaTimes} from "react-icons/fa"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
 
@@ -8,6 +10,7 @@ const NumberKeys = () => {
     const [result, setResult] = useState("")
     const [clickValue, setClickValue] = useState("0")
     const [finalResult, setFinalResult] = useState(true)
+    const [history, setHistory] = useState("")
 
     const updateNumberClick = (e) => {
         if (finalResult && clickValue ==="0"){
@@ -18,6 +21,14 @@ const NumberKeys = () => {
             setClickValue((parseFloat(e.target.innerHTML)).toString())
         }
         setFinalResult(true)
+        maxDigits()
+
+    }
+
+    const maxDigits = () => {
+        if (clickValue.length === 24) {
+            setClickValue(clickValue)
+        }
     }
 
     const clear = () => {
@@ -31,6 +42,7 @@ const NumberKeys = () => {
         } else {
             setClickValue(clickValue.slice(0, -1))
         }
+        
     }
 
     const compute = () => {
@@ -63,12 +75,14 @@ const NumberKeys = () => {
         setClickValue(answer.toString())
         setResult("")
         setFinalResult(false)
-        
+        setHistory(answer.toString())
     }
     
     const periodClick = (e) => {
        if (clickValue.includes(".")) {
            return
+       } else if (clickValue === "0") {
+            setClickValue("0.")
        } else {
            updateNumberClick(e)
        }
@@ -95,60 +109,68 @@ const NumberKeys = () => {
     const squareRoot = () => {
         if (result !== "") return
         setClickValue((Math.sqrt(+clickValue)).toString())
-        // modifyDisplay()
+        
     }
 
     const updateOperandClick = (e) => {
         if (result !== "") {
             const answer = compute()
-            setResult(answer+(e.target.name))
+            setResult(answer+(e.currentTarget.name))
             setClickValue("0")
-
+            setHistory(answer.toString())
         } else {
             setClickValue("0")
-            setResult(clickValue+(e.target.name))
+            setResult(clickValue+(e.currentTarget.name))
         }
         
     }
 
+    const showAns = () => {
+        setClickValue(history)
+    }
+
+    
     // const modifyDisplay = () => {
     //     const integer = clickValue.split(".")[0]
     //     const decimal = clickValue.split(".")[1]
-    //     let  integer2 = (+integer.toLocaleString("en-US", {maximumFractionDigits: 10})).toString()
+    //     console.log("decimal", decimal, typeof(decimal))
+    //     console.log("integer", integer, typeof(integer))
+    //     let  integer2 = parseFloat(integer).toLocaleString("en-US", {maximumFractionDigits: 10})
+    //     console.log("integer2", integer2)
     //     if (decimal != null) {
-    //         setClickValue(integer2+decimal)
+    //         setClickValue(integer2+"."+decimal)
     //     } else {
     //         setClickValue(integer2)
     //     }
     // }
-
     
+
     return (
         <>
         <Display result1={clickValue} result2={result}/>
         <div className="keypad">
             <button id="delete"onClick={clear}>AC</button>
-            <button style={{color: "grey"}} onClick={squareRoot}>√</button>
-            <button style={{color: "grey"}} onClick={percent}>%</button>
-            <button id="delete" onClick={erase}>DEL</button>
-            <button onClick={updateNumberClick}>1</button>
-            <button onClick={updateNumberClick}>2</button>
-            <button onClick={updateNumberClick}>3</button>
-            <button name="/" style={{color: "grey"}} onClick={updateOperandClick}>÷</button>
-            <button onClick={updateNumberClick}>4</button>
-            <button onClick={updateNumberClick}>5</button>
-            <button onClick={updateNumberClick}>6</button>
-            <button name="*" style={{color: "grey"}} onClick={updateOperandClick}>&times;</button>
-            <button onClick={updateNumberClick}>7</button>
-            <button onClick={updateNumberClick}>8</button>
-            <button onClick={updateNumberClick}>9</button>
-            <button name="-" style={{color: "grey"}} onClick={updateOperandClick}>&ndash;</button>
-            <button onClick={periodClick}>.</button>
-            <button onClick={updateNumberClick}>0</button>
-            <button onClick={negate}>+/-</button>
-            <button name="+" style={{color: "grey"}} onClick={updateOperandClick}>+</button>
-            <button className="span-two-columns" style={{color: "grey"}}>HISTORY</button>
-            <button onClick={equals} className="span-two-columns" style={{color: "darkgrey" }}>=</button>
+            <button style={{color: "grey"}} onClick={squareRoot}><FaSquareRootAlt /></button>
+            <button style={{color: "grey"}} onClick={percent}><FaPercent /></button>
+            <button id="delete" onClick={erase}><FaBackspace /></button>
+            <button className="numberKey" onClick={updateNumberClick}>1</button>
+            <button className="numberKey" onClick={updateNumberClick}>2</button>
+            <button className="numberKey" onClick={updateNumberClick}>3</button>
+            <button name="/" style={{color: "grey"}} onClick={updateOperandClick}><FaDivide /></button>
+            <button className="numberKey" onClick={updateNumberClick}>4</button>
+            <button className="numberKey" onClick={updateNumberClick}>5</button>
+            <button className="numberKey" onClick={updateNumberClick}>6</button>
+            <button name="*" style={{color: "grey"}} onClick={updateOperandClick}><FaTimes /></button>
+            <button className="numberKey" onClick={updateNumberClick}>7</button>
+            <button className="numberKey"  onClick={updateNumberClick}>8</button>
+            <button className="numberKey" onClick={updateNumberClick}>9</button>
+            <button name="-" style={{color: "grey"}} onClick={updateOperandClick}><FaMinus /></button>
+            <button className="numberKey" onClick={periodClick}>.</button>
+            <button className="numberKey" onClick={updateNumberClick}>0</button>
+            <button className="numberKey" onClick={negate}><FontAwesomeIcon icon={solid("plus-minus")} /></button>
+            <button name="+" style={{color: "grey"}} onClick={updateOperandClick}><FaPlus /></button>
+            <button id="ans" className="span-two-columns" onClick={showAns}>ANS</button>
+            <button id="equals" onClick={equals} className="span-two-columns"><FaEquals /></button>
         </div>
         </>
     )

@@ -1,6 +1,7 @@
 # The React Framework - Calculator solution
 
 ## Overview
+
 This project focuses on building a calcultor that does basic arithmetic operations. This one functions like the first calculator project, which was build with classes and vanilla JavaScript.
 
 ### The Manual
@@ -16,10 +17,9 @@ Users of this Calculator should be able to:
 
 ![](./Calculator Design.png)
 
-
 ### Links
 
-- Solution URL: [Please click here!](https://kuckelvin.github.io/Calculator_R)
+- Solution URL: [Please click here!](https://calculator-r.vercel.app)
 
 ## Thanks for your time!
 
@@ -33,6 +33,4 @@ Users of this Calculator should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Styled Components]
 
-
 ### Author: Kelvin Echenim.
-
