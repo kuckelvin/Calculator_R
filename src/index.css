@@ -94,7 +94,9 @@ button {
 
 #delete {
   color: red;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 2.5rem;
 }
 
 @media (max-width: 650px) {
