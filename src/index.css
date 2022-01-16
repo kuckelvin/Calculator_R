@@ -11,6 +11,8 @@ body {
   background: linear-gradient(to right, #bac2d2, #2b78b8);
   padding: 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -18,13 +20,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 10px;
   background-color: #000;
   overflow: hidden;
-  width: 420px;
-  position: relative;
-  left: 35%;
+  max-width: 412px;
+  max-height: 100vh;
 }
 
 .display {
@@ -56,15 +57,25 @@ body {
 .keypad {
   display: grid;
   grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(6, 100px);
+  grid-template-rows: repeat(6, 98px);
 }
 
 .span-two-columns {
   grid-column: span 2;
+  color: #6b705c;
+}
+
+#ans {
+  border-bottom-left-radius: 24px;
+  letter-spacing: 4px;
+}
+
+#equals {
+  border-bottom-right-radius: 24px;
 }
 
 button {
-  margin: 4px;
+  margin: 3px;
   border-radius: 3px;
   outline: none;
   cursor: pointer;
@@ -73,18 +84,15 @@ button {
 }
 
 @media (max-width: 650px) {
-  body {
-    display: flex;
-    justify-content: center;
+  .container {
+    max-width: 372px;
+    max-height: 700px;
+    overflow: hidden;
+    margin: 2px 0;
   }
 
-  .container {
-    max-width: 80vw;
-    height: 95vh;
-    overflow: hidden;
-    position: relative;
-    left: 5%;
-    margin-top: 10px;
+  button {
+    margin: 3px;
   }
 
   .keypad {

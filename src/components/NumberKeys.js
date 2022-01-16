@@ -8,6 +8,7 @@ const NumberKeys = () => {
     const [result, setResult] = useState("")
     const [clickValue, setClickValue] = useState("0")
     const [finalResult, setFinalResult] = useState(true)
+    const [history, setHistory] = useState("")
 
     const updateNumberClick = (e) => {
         if (finalResult && clickValue ==="0"){
@@ -18,6 +19,14 @@ const NumberKeys = () => {
             setClickValue((parseFloat(e.target.innerHTML)).toString())
         }
         setFinalResult(true)
+        maxDigits()
+
+    }
+
+    const maxDigits = () => {
+        if (clickValue.length === 24) {
+            setClickValue(clickValue)
+        }
     }
 
     const clear = () => {
@@ -31,6 +40,7 @@ const NumberKeys = () => {
         } else {
             setClickValue(clickValue.slice(0, -1))
         }
+        
     }
 
     const compute = () => {
@@ -63,7 +73,7 @@ const NumberKeys = () => {
         setClickValue(answer.toString())
         setResult("")
         setFinalResult(false)
-        
+        setHistory(answer.toString())
     }
     
     const periodClick = (e) => {
@@ -95,7 +105,7 @@ const NumberKeys = () => {
     const squareRoot = () => {
         if (result !== "") return
         setClickValue((Math.sqrt(+clickValue)).toString())
-        // modifyDisplay()
+        
     }
 
     const updateOperandClick = (e) => {
@@ -103,7 +113,7 @@ const NumberKeys = () => {
             const answer = compute()
             setResult(answer+(e.target.name))
             setClickValue("0")
-
+            setHistory(answer.toString())
         } else {
             setClickValue("0")
             setResult(clickValue+(e.target.name))
@@ -111,12 +121,20 @@ const NumberKeys = () => {
         
     }
 
+    const showAns = () => {
+        setClickValue(history)
+    }
+
+    
     // const modifyDisplay = () => {
     //     const integer = clickValue.split(".")[0]
     //     const decimal = clickValue.split(".")[1]
-    //     let  integer2 = (+integer.toLocaleString("en-US", {maximumFractionDigits: 10})).toString()
+    //     console.log("decimal", decimal, typeof(decimal))
+    //     console.log("integer", integer, typeof(integer))
+    //     let  integer2 = parseFloat(integer).toLocaleString("en-US", {maximumFractionDigits: 10})
+    //     console.log("integer2", integer2)
     //     if (decimal != null) {
-    //         setClickValue(integer2+decimal)
+    //         setClickValue(integer2+"."+decimal)
     //     } else {
     //         setClickValue(integer2)
     //     }
@@ -147,8 +165,8 @@ const NumberKeys = () => {
             <button onClick={updateNumberClick}>0</button>
             <button onClick={negate}>+/-</button>
             <button name="+" style={{color: "grey"}} onClick={updateOperandClick}>+</button>
-            <button className="span-two-columns" style={{color: "grey"}}>HISTORY</button>
-            <button onClick={equals} className="span-two-columns" style={{color: "darkgrey" }}>=</button>
+            <button id="ans" className="span-two-columns" onClick={showAns}>ANS</button>
+            <button id="equals" onClick={equals} className="span-two-columns">=</button>
         </div>
         </>
     )
