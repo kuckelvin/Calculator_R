@@ -22,7 +22,6 @@ const NumberKeys = () => {
         }
         setFinalResult(true)
         maxDigits()
-
     }
 
     const maxDigits = () => {
@@ -77,6 +76,20 @@ const NumberKeys = () => {
         setFinalResult(false)
         setHistory(answer.toString())
     }
+
+    
+    const percent = () => {
+        if (result !== "") {
+            const answer = compute()
+            setResult("")
+            setClickValue((answer/100).toString())
+            setHistory((answer/100).toString())
+        } else {
+            let ans = (+clickValue/100).toString()
+            setClickValue(ans)
+            setHistory(ans)
+        }
+    }
     
     const periodClick = (e) => {
        if (clickValue.includes(".")) {
@@ -97,19 +110,12 @@ const NumberKeys = () => {
 
     }
 
-    const percent = () => {
-        if (result !== "") {
-            equals()
-            setClickValue((+clickValue/100).toString())
-        } else {
-            setClickValue((+clickValue/100).toString())
-        }
-    }
 
     const squareRoot = () => {
         if (result !== "") return
-        setClickValue((Math.sqrt(+clickValue)).toString())
-        
+        let answer = (Math.sqrt(+clickValue)).toString()
+        setClickValue(answer)
+        setHistory(answer)
     }
 
     const updateOperandClick = (e) => {
